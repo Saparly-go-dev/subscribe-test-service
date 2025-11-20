@@ -1,14 +1,22 @@
 package model
 
-import "time"
+import (
+	"github.com/google/uuid"
+	"time"
+)
 
 type Subscription struct {
-	ID          string     `db:"id"`
-	ServiceName string     `db:"service_name"`
-	Price       int        `db:"price"`
-	UserID      string     `db:"user_id"`
-	StartDate   time.Time  `db:"start_date"`
-	EndDate     *time.Time `db:"end_date"`
-	CreatedAt   time.Time  `db:"created_at"`
-	UpdatedAt   time.Time  `db:"updated_at"`
+	ID          uint      `gorm:"primaryKey"`
+	UserID      uuid.UUID `gorm:"type:uuid;not null;index"`
+	ServiceName string    `gorm:"type:varchar(255);not null;index"`
+	Price       int       `gorm:"not null"`
+	StartDate   time.Time `gorm:"not null"`
+	EndDate     *time.Time
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
+}
+
+// TableName specifies the table name for the Subscription model
+func (Subscription) TableName() string {
+	return "subscriptions"
 }

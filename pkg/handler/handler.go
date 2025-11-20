@@ -9,7 +9,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-type Handler strucsubscribet {
+type Handler struct {
 	services *service.Service
 }
 

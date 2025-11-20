@@ -1,6 +1,8 @@
 package service
 
-import ()
+import (
+	"subscribe-test-service/pkg/repository"
+)
 
 type Service struct {
 }
