@@ -1,0 +1,13 @@
+basePath: /
+info:
+  contact: {}
+  description: API Server for Subscibition
+  title: Subscibition test service
+  version: "1.0"
+paths: {}
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
