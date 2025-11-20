@@ -1,8 +1,9 @@
-package model
+package models
 
 import (
-	"github.com/google/uuid"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type Subscription struct {
@@ -14,6 +15,13 @@ type Subscription struct {
 	EndDate     *time.Time
 	CreatedAt   time.Time
 	UpdatedAt   time.Time
+}
+
+type GetAllSubscriptionsFilter struct {
+	UserID      *uuid.UUID
+	ServiceName *string
+	StartDate   *time.Time
+	EndDate     *time.Time
 }
 
 // TableName specifies the table name for the Subscription model

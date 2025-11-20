@@ -1,8 +1,9 @@
 package repository
 
 import (
-	"gorm.io/gorm"
 	"subscribe-test-service/models"
+
+	"gorm.io/gorm"
 )
 
 // SubscriptionRepository реализует интерфейс Subscription для работы с PostgreSQL.
@@ -31,7 +32,7 @@ func (r *SubscriptionRepository) GetByID(id uint) (models.Subscription, error) {
 	return sub, result.Error
 }
 
-func (r *SubscriptionRepository) GetAll(filter GetAllSubscriptionsFilter) ([]models.Subscription, error) {
+func (r *SubscriptionRepository) GetAll(filter models.GetAllSubscriptionsFilter) ([]models.Subscription, error) {
 	var subs []models.Subscription
 	query := r.db.Model(&models.Subscription{})
 

@@ -1,4 +1,4 @@
-package model
+package models
 
 type SubscriptionCreateRequest struct {
 	ServiceName string `json:"service_name" example:"Yandex Plus" binding:"required"`

@@ -24,11 +24,10 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 	router.GET("swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	//api := router.Group("/api")
-	//{
-	//
-	//
-	//}
+	api := router.Group("/api")
+	{
+
+	}
 
 	return router
 }
