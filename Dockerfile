@@ -8,6 +8,7 @@ RUN go mod download
 COPY . .
 
 COPY configs/config.yaml ./configs/config.yaml
+COPY .env .env  
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o server cmd/main.go
 
@@ -17,6 +18,8 @@ WORKDIR /app
 
 COPY --from=builder /app/server .
 COPY --from=builder /app/configs ./configs
+COPY --from=builder /app/.env ./.env
+
 
 EXPOSE 8085
 
