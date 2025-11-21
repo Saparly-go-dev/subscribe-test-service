@@ -1,8 +1,17 @@
-port : "8085"
+# port : "8085"
+
+# db:
+#   username : "postgres"
+#   host: "0.0.0.0"
+#   port: "5432"
+#   dbname: "subscribe"
+#   sslmode: "disable"
+port: "8085"
 
 db:
-  username : "postgres"
-  host: "0.0.0.0"
-  port: "5432"
+  username: "postgres"
+  password: "postgres"  
+  host: "db"       
+  port: "5432"    
   dbname: "subscribe"
   sslmode: "disable"

@@ -1,7 +1,7 @@
 package handler
 
 import (
-	docs "subscribe-test-service/docs"
+	"subscribe-test-service/docs"
 	"subscribe-test-service/pkg/service"
 
 	"github.com/gin-gonic/gin"
@@ -24,9 +24,13 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 	router.GET("swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	api := router.Group("/api")
+	subscriptions := router.Group("/subscriptions")
 	{
-
+		subscriptions.POST("/", h.createSubscription)
+		subscriptions.GET("/", h.getAllSubscriptions)
+		subscriptions.GET("/:id", h.getSubscription)
+		subscriptions.PUT("/:id", h.updateSubscription)
+		subscriptions.DELETE("/:id", h.deleteSubscription)
 	}
 
 	return router

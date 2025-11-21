@@ -2,18 +2,20 @@ package main
 
 import (
 	"context"
+	"os"
+	"os/signal"
+	subscribe_test_service "subscribe-test-service"
+	"subscribe-test-service/models"
+	"subscribe-test-service/pkg/handler"
+	"subscribe-test-service/pkg/repository"
+	"subscribe-test-service/pkg/service"
+	"syscall"
+
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"os"
-	"os/signal"
-	subscribe_test_service "subscribe-test-service"
-	"subscribe-test-service/pkg/handler"
-	"subscribe-test-service/pkg/repository"
-	"subscribe-test-service/pkg/service"
-	"syscall"
 )
 
 //	@title			Subscibition test service
@@ -55,7 +57,7 @@ func main() {
 	}
 
 	// Run auto migration for models if necessary
-	err = db.AutoMigrate()
+	err = db.AutoMigrate(&models.Subscription{})
 
 	if err != nil {
 		logrus.Fatalf("error during migration: %s", err.Error())
